@@ -1,4 +1,6 @@
-// layout.js - this file is the main layout that will be applied to ALL rendered pages
+// layout.js - this file is the main layout that will be applied to ALL rendered pages.
+// It imports the AppProvider component which is wrapped around the component tree, {children}, and
+// makes the store's state available from any component in the app.
 
 import './globals.css'
 import { Inter } from 'next/font/google'
@@ -26,6 +28,5 @@ export default function RootLayout({ children }) {
         </AppProvider>
       </body>
     </html>
-
   )
 }

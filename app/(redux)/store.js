@@ -4,9 +4,11 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 import topicsReducer from "./features/topics/topicsSlice.js";
+import quizzesReducer from "./features/quizzes/quizzesSlice.js";
 
 export const store = configureStore({
     reducer: {
-        topics: topicsReducer
+        topics: topicsReducer,
+        quizzes: quizzesReducer
     }
 })

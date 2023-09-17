@@ -1,7 +1,8 @@
-// topicSlice.js - This file creates a topic 'slice' and the corresponding Action Creators
+// topicsSlice.js - This file creates a topic 'slice' including the corresponding Reducer and Action Creators
 
 import { createSlice } from "@reduxjs/toolkit";
 
+// Create Slice
 export const topicsSlice = createSlice({    
     name: 'topics',
     initialState: { topics: {} },
@@ -12,7 +13,7 @@ export const topicsSlice = createSlice({
     }
 })
 
-// Export action creators
+// Export action creator(s)
 export const { addTopic } = topicsSlice.actions;
 
 // Export the selector
