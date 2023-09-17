@@ -3,6 +3,7 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
+import AppProvider from './appProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,8 +21,11 @@ export default function RootLayout({ children }) {
           <Link href={"/quizzes"}>Quizzes</Link>
           <Link href={"/new-quiz"}>New Quiz</Link>
         </nav>
-        {children}
+        <AppProvider>
+          {children}
+        </AppProvider>
       </body>
     </html>
+
   )
 }
