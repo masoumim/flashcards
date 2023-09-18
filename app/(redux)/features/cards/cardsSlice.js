@@ -9,12 +9,16 @@ export const cardsSlice = createSlice({
     reducers: {
         addCard: (state, action) => {            
             state.cards[action.payload.cardId] = action.payload;
+        },
+        removeCard: (state, action) => {
+            delete state.cards[action.payload.cardId];
         }
     }
 })
 
 // Export action creator(s)
 export const { addCard } = cardsSlice.actions;
+export const { removeCard } = cardsSlice.actions;
 
 // Export the selectors
 export const selectCards = (state) => state.cards;

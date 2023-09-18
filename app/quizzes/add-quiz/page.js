@@ -63,7 +63,7 @@ export default function AddQuizPage() {
                     })}
                 </select>
                 <br/>
-                {/*  */}
+                {/* TODO: List of new cards for this quiz */}
                 {cardsList.map((card) => {
                     return <NewCardForm key={card.cardId} card={card}/>
                 })}

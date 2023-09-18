@@ -1,11 +1,25 @@
 // newCardForm.js - This file creates and renders a form for a new card
 
-export default function NewCardForm(){
-    return(
+import { useDispatch } from "react-redux";
+import { removeCard } from "../(redux)/features/cards/cardsSlice";
+
+export default function NewCardForm({ card }) {
+
+    // store hook in variable so it can be used in the body of
+    // functions other than Component Functions
+    const dispatch = useDispatch();
+
+    function handleRemoveCard() {
+        dispatch(removeCard(card));
+    }
+
+    return (
         <>
-        <input type="text"></input>
-        <input type="text"></input>
-        <button>Remove Card</button>
+            <label htmlFor="question">Question</label>
+            <input type="text" name="question" id="question" required></input>
+            <label htmlFor="answer">Answer</label>
+            <input type="text" name="answer" id="answer" required></input>
+            <button onClick={handleRemoveCard}>Remove Card</button>
         </>
     );
 }
