@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTopic } from "@/app/(redux)/features/topics/topicsSlice";
+import { addTopic } from "@/app/redux/features/topics/topicsSlice";
 import { v4 as uuidv4 } from 'uuid'; // create a unique id
 
 export default function AddTopicPage() {    

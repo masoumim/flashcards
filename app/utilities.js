@@ -6,7 +6,7 @@ utilities.js - This file handles a variety of utility functions to help:
 */
 
 import { useSelector } from "react-redux";
-import { selectTopics } from "./(redux)/features/topics/topicsSlice";
+import { selectTopics } from "./redux/features/topics/topicsSlice";
 
 // Return a list of topics from the store
 export function getTopics() {
