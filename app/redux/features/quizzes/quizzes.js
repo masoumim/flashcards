@@ -3,21 +3,18 @@
 
 import React from "react";
 import Link from "next/link";
-import { useSelector } from 'react-redux'
-import { selectQuizzes } from "./quizzesSlice";
+import { getQuizzes } from "@/app/utilities";
 
 export default function Quizzes() {
-    // Get the quizzes Object
-    const quizzes = useSelector(selectQuizzes);    
-    
-    // Get an array of each individual quiz Object
-    const quizzesList = Object.values(quizzes.quizzes);
+    // Get a list of all quizzes
+    const quizzesList = getQuizzes();
     
     // Render / display each of the Quizzes
     // TODO: Clicking quiz name will take you to that quiz
     return (
         <>  
             {quizzesList.map((quiz) => {
+                // TODO: MAKE EACH QUIZ NAME A LINK TO THAT QUIZ
                 return <p key={quiz.quizId}>{quiz.quizName}</p>
             })}
             <Link href={"/quizzes/add-quiz"}>Create New Quiz</Link>

@@ -16,7 +16,7 @@ export const quizzesSlice = createSlice({
 // Export action creator(s)
 export const { addQuiz } = quizzesSlice.actions;
 
-// Export the selector
+// Export the selectors
 export const selectQuizzes = (state) => state.quizzes;
 
 // Export reducer

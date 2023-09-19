@@ -16,7 +16,7 @@ export const topicsSlice = createSlice({
 // Export action creator(s)
 export const { addTopic } = topicsSlice.actions;
 
-// Export the selector
+// Export the selectors
 export const selectTopics = (state) => state.topics;
 
 // Export reducer
