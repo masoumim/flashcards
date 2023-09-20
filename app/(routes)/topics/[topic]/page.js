@@ -1,6 +1,7 @@
 "use client";
-// topics/[topic]/page.js - This file establishes the route segment '/topics/[topic]' and renders a list of quizzes for this topic
+// page.js - This file establishes the route segment '/topics/[topic]' and renders a list of quizzes for this topic
 
+import Link from "next/link";
 import { getQuizzes } from "@/app/utilities";
 import { getTopicName } from "@/app/utilities";
 
@@ -8,7 +9,7 @@ export default function TopicPage({ params }) {
     // note: params.topic = topicId
 
     // Get quizzes for this topic by topicId
-    const topicQuizzes = getQuizzes(params.topic);
+    const topicQuizzes = getQuizzes({ topicId: params.topic });
 
     // Get topic name by topicId
     const topicName = getTopicName(params.topic);
@@ -18,8 +19,7 @@ export default function TopicPage({ params }) {
             <h1>{topicName}</h1>
             {/* List all Quizzes with this topic */}
             {topicQuizzes.map((quiz) => {
-                // TODO: MAKE EACH QUIZ NAME A LINK TO THAT QUIZ
-                return <p key={quiz.quizId}>{quiz.quizName}</p>
+                return <Link href={`/quizzes/${quiz.quizId}`} key={quiz.quizId}>{quiz.quizName}</Link>
             })}
         </>
     )

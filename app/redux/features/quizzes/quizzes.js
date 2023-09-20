@@ -9,14 +9,13 @@ export default function Quizzes() {
     // Get a list of all quizzes
     const quizzesList = getQuizzes();
     
-    // Render / display each of the Quizzes
-    // TODO: Clicking quiz name will take you to that quiz
+    // Render / display each of the Quizzes    
     return (
         <>  
-            {quizzesList.map((quiz) => {
-                // TODO: MAKE EACH QUIZ NAME A LINK TO THAT QUIZ
-                return <p key={quiz.quizId}>{quiz.quizName}</p>
+            {quizzesList.map((quiz) => {                
+                return <Link href={`/quizzes/${quiz.quizId}`} key={quiz.quizId}>{quiz.quizName}</Link>
             })}
+            <br/>
             <Link href={"/quizzes/add-quiz"}>Create New Quiz</Link>
         </>
     )
