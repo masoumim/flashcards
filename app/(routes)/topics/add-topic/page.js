@@ -42,8 +42,8 @@ export default function AddTopicPage() {
             // Clear the input field
             setTopicName("");
 
-            // Clear the feedback msg
-            setFeedBackMsg("");
+            // Set the feedback msg
+            setFeedBackMsg(`${topicName} topic created!`);
         }
     }
 
