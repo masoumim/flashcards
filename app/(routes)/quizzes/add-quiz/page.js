@@ -86,6 +86,9 @@ export default function AddQuizPage() {
             // Clear the input field
             setQuizName("");
 
+            // Reset the Select element's option
+            e.currentTarget[1].value = "";
+
             // Set the feedback msg
             setFeedBackMsg(`${quizName} quiz created!`);
         }

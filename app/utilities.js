@@ -58,19 +58,25 @@ export function getQuizzes({ quizId = null, topicId = null } = {}) {
 // Return a topic name by topicId
 export function getTopicName(topicId) {
     const topic = getTopics({ topicId: topicId });
-    return topic.topicName;
+    if (topic) {
+        return topic.topicName;
+    }
 }
 
 // Return a quiz name by quizId
 export function getQuizName(quizId) {
     const quiz = getQuizzes({ quizId: quizId });
-    return quiz.quizName;
+    if(quiz){
+        return quiz.quizName;
+    }    
 }
 
 // Return a list of cardId's by quizId
 export function getCardIdList(quizId) {
     const quiz = getQuizzes({ quizId: quizId });
-    return quiz.cardsIds;
+    if (quiz) {
+        return quiz.cardsIds;
+    }
 }
 
 // Return a list of Cards by a Quiz's cardIds list
@@ -82,10 +88,10 @@ export function getCardsForQuiz(cardIds) {
     const quizCardsList = Object.values(quizCardsObject);
 
     // Get the cards for this quiz by finding a cardId match in the quizCardsList
-    const quizCards = [];    
+    const quizCards = [];
     for (let cardId in cardIds) {
         for (let card in quizCardsList) {
-            if (cardIds[cardId] === quizCardsList[card].cardId) {                
+            if (cardIds[cardId] === quizCardsList[card].cardId) {
                 quizCards.push(quizCardsList[card]);
             }
         }

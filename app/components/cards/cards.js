@@ -16,7 +16,7 @@ export default function Cards({ cardIdList }) {
     // State variable to store the current card using the cardIndex.
     // Initialized to the first card in the quizCards array.
     const [currentCard, setCurrentCard] = useState(quizCards[cardIndex].front);
-
+        
     // Update the current card when the cardIndex state is changed
     useEffect(() => {
         setCurrentCard(quizCards[cardIndex].front)

@@ -14,6 +14,11 @@ export default function TopicPage({ params }) {
     // Get topic name by topicId
     const topicName = getTopicName(params.topic);
 
+    // Check if this topic exists
+    if(topicQuizzes === undefined || topicName === undefined){
+        return(<p>Sorry, that topic doesn't exist!</p>);
+    }
+
     return (
         <>
             <h1>{topicName}</h1>

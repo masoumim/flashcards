@@ -5,7 +5,7 @@ import Cards from "@/app/components/cards/cards.js";
 import { getCardIdList } from "@/app/utilities";
 import { getQuizName } from "@/app/utilities";
 
-export default function Quiz({params}) {
+export default function Quiz({ params }) {
     // note: params.quiz = quizId
 
     // Get list of cardId's for this quiz
@@ -13,11 +13,16 @@ export default function Quiz({params}) {
 
     // Get this quiz's name
     const quizName = getQuizName(params.quiz);
-    
+
+    // Check if quiz exists
+    if (cardIdList === undefined || quizName === undefined) {
+        return (<p>Sorry, that quiz doesn't exist!</p>);
+    }
+
     return (
         <>
             <h1>{quizName}</h1>
-            <Cards cardIdList={cardIdList}/>
+            <Cards cardIdList={cardIdList} />
         </>
     )
 }
