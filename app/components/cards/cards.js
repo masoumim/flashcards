@@ -10,8 +10,11 @@ export default function Cards({ cardIdList }) {
     // Get the cards belonging to this quiz
     const quizCards = getCardsForQuiz(cardIdList);
 
+    // State variable to track position in the quizCards array
     const [cardIndex, setCardIndex] = useState(0);
 
+    // State variable to store the current card using the cardIndex.
+    // Initialized to the first card in the quizCards array.
     const [currentCard, setCurrentCard] = useState(quizCards[cardIndex].front);
 
     // Update the current card when the cardIndex state is changed
@@ -26,12 +29,25 @@ export default function Cards({ cardIdList }) {
 
     // Display previous card
     function handlePreviousCard() {
-        setCardIndex(cardIndex - 1);
+        // If already at the first card, go to last card
+        if(cardIndex === 0){
+            setCardIndex(quizCards.length - 1)
+        }
+        else{
+            setCardIndex(cardIndex - 1);
+        }
     }
 
     // Display next card
     function handleNextCard() {
-        setCardIndex(cardIndex + 1);
+        // If already at the last card, go to first card
+        if(cardIndex === quizCards.length - 1){
+            setCardIndex(0);
+        }
+        else{
+            setCardIndex(cardIndex + 1);
+        }
+        
     }
     return (
         <>
