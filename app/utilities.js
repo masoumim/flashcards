@@ -8,22 +8,23 @@ utilities.js - This file handles a variety of utility functions to help:
 import { useSelector } from "react-redux";
 import { selectTopics } from "./redux/features/topics/topicsSlice";
 import { selectQuizzes } from "./redux/features/quizzes/quizzesSlice";
+import { selectQuizCards } from "./redux/features/cards/cardsSlice";
 
 // Return a list of: all topics or topic by topicId
 // *Using 'named function parameters'
-export function getTopics({topicId = null} = {}) {
+export function getTopics({ topicId = null } = {}) {
     // Get the topics Object
     const topics = useSelector(selectTopics);
 
     // return an array of each individual topic Object
     const topicsList = Object.values(topics.topics);
 
-    if(topicId){
+    if (topicId) {
         // Get topic by topicId
         const topicById = topicsList.filter((topic) => topic.topicId === topicId);
         return topicById[0];
     }
-    else{
+    else {
         // get all topics
         return topicsList;
     }
@@ -55,8 +56,8 @@ export function getQuizzes({ quizId = null, topicId = null } = {}) {
 }
 
 // Return a topic name by topicId
-export function getTopicName(topicId) {    
-    const topic = getTopics({topicId: topicId});    
+export function getTopicName(topicId) {
+    const topic = getTopics({ topicId: topicId });
     return topic.topicName;
 }
 
@@ -66,8 +67,31 @@ export function getQuizName(quizId) {
     return quiz.quizName;
 }
 
-// Return a list of cards by quizId
-export function getCardList(quizId) {
-    const quiz = getQuizzes({ quizId: quizId });    
+// Return a list of cardId's by quizId
+export function getCardIdList(quizId) {
+    const quiz = getQuizzes({ quizId: quizId });
     return quiz.cardsIds;
+}
+
+// Return a list of Cards by a Quiz's cardIds list
+export function getCardsForQuiz(cardIds) {
+    // Get the quizCards Object
+    const quizCardsObject = useSelector(selectQuizCards);
+
+    const foo = Object.entries(quizCardsObject);
+
+    foo.forEach((card) => console.log(card));
+    
+    
+    
+    const quizCards = [];
+    // Get all cards in the 'cardIds' parameter that match cards in quizCardsObject
+    // for (let i = 0; i < cardIds.length(); i++) {
+    //     for (let j = 0; j < quizCardsObject.length(); j++) {
+    //         if (cardIds[i] === quizCardsObject[j].cardId) {
+    //             quizCards.push(quizCardsObject[j]);
+    //         }
+    //     }
+    // }
+    // return quizCards;
 }

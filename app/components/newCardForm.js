@@ -16,9 +16,9 @@ export default function NewCardForm({ card }) {
     return (
         <>
             <label htmlFor="question">Question</label>
-            <input type="text" name="question" id="question" required></input>
+            <input type="text" name="question" id="question" required/>
             <label htmlFor="answer">Answer</label>
-            <input type="text" name="answer" id="answer" required></input>
+            <input type="text" name="answer" id="answer" required/>
             <button onClick={handleRemoveCard}>Remove Card</button>
         </>
     );

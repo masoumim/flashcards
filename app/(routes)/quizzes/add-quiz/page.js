@@ -30,33 +30,45 @@ export default function AddQuizPage() {
     // Get an array of each individual new card Object
     const newCardsList = Object.values(newCards);
 
-    // Submit Handler - uses the useDispatch hook to call the Action Creator 'addQuiz'
-    // e.currentTarget[1] is the <select> element and the value of the selected <option> is the topicId
+    // Submit Handler - uses the useDispatch hook to call the Action Creator 'addQuiz'    
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
+        // Variable used for getting Questions / Answers
+        // e.currentTarget[2], e.currentTarget[3] are the first Q/A
+        let currentTargetIndex = 2;
+
         // Create array of card ID's for the New Quiz
         const newQuizCardIds = newCardsList.map((newCard) => {
+
             // Get the new card's id
             const newCardId = newCard.cardId;
-            
-            // Add the new card to the quizCards object in the Card Slice
-            dispatch(addQuizCard(newCard));
 
-            // Remove the new card from the newCards object in the Card Slice
+            // Add a Quiz Card to the quizCards object in the Card Slice
+            dispatch(addQuizCard({
+                cardId: newCardId,
+                front: e.currentTarget[currentTargetIndex].value,
+                back: e.currentTarget[++currentTargetIndex].value
+            }));
+
+            // Increment currentTargetIndex by 2 to account for the 'Remove Card' button for each card
+            currentTargetIndex += 2;
+
+            // Remove the newCard from the newCards object in the Card Slice
             dispatch(removeNewCard(newCard));
-                
+
             // return the new card ID to the array
             return newCardId;
         });
 
         // Create the Quiz using the new card Ids
+        // e.currentTarget[1] is the <select> element and the value of the selected <option> is the topicId
         dispatch(addQuiz({
             quizId: uuidv4(),
             quizName: quizName,
             topicId: e.currentTarget[1].value,
             cardsIds: newQuizCardIds
-        }));     
+        }));
     }
 
     // Add a new card
@@ -70,7 +82,7 @@ export default function AddQuizPage() {
     }
 
     return (
-        <>            
+        <>
             <form id="addNewQuiz" onSubmit={handleSubmit}>
                 <label htmlFor="quiz">Quiz Name</label>
                 <input type="text" id="quiz-name" name="quiz-name" onChange={(e) => setQuizName(e.currentTarget.value)} required />
@@ -82,8 +94,8 @@ export default function AddQuizPage() {
                     })}
                 </select>
                 <br />
-                {/* List of new cards for this quiz */}                
-                {newCardsList.map((card) => {                    
+                {/* List of new cards for this quiz */}
+                {newCardsList.map((card) => {
                     return <NewCardForm key={card.cardId} card={card} />
                 })}
                 <br />
