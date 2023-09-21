@@ -9,7 +9,7 @@ import { addQuiz } from "@/app/redux/features/quizzes/quizzesSlice";
 import { removeNewCard, selectNewCards } from "@/app/redux/features/cards/cardsSlice";
 import { addNewCard } from "@/app/redux/features/cards/cardsSlice";
 import { addQuizCard } from "@/app/redux/features/cards/cardsSlice";
-import NewCardForm from "@/app/components/newCardForm";
+import NewCardForm from "@/app/components/cards/newCardForm";
 import { getTopics } from "@/app/utilities";
 import { v4 as uuidv4 } from 'uuid'; // create a unique id
 

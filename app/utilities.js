@@ -16,7 +16,7 @@ export function getTopics({ topicId = null } = {}) {
     // Get the topics Object
     const topics = useSelector(selectTopics);
 
-    // return an array of each individual topic Object
+    // Get an array of each individual topic Object
     const topicsList = Object.values(topics.topics);
 
     if (topicId) {
@@ -78,20 +78,18 @@ export function getCardsForQuiz(cardIds) {
     // Get the quizCards Object
     const quizCardsObject = useSelector(selectQuizCards);
 
-    const foo = Object.entries(quizCardsObject);
+    // Get a array of each individual quiz card object
+    const quizCardsList = Object.values(quizCardsObject);
 
-    foo.forEach((card) => console.log(card));
-    
-    
-    
-    const quizCards = [];
-    // Get all cards in the 'cardIds' parameter that match cards in quizCardsObject
-    // for (let i = 0; i < cardIds.length(); i++) {
-    //     for (let j = 0; j < quizCardsObject.length(); j++) {
-    //         if (cardIds[i] === quizCardsObject[j].cardId) {
-    //             quizCards.push(quizCardsObject[j]);
-    //         }
-    //     }
-    // }
-    // return quizCards;
+    // Get the cards for this quiz by finding a cardId match in the quizCardsList
+    const quizCards = [];    
+    for (let cardId in cardIds) {
+        for (let card in quizCardsList) {
+            if (cardIds[cardId] === quizCardsList[card].cardId) {                
+                quizCards.push(quizCardsList[card]);
+            }
+        }
+    }
+
+    return quizCards;
 }

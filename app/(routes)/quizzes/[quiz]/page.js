@@ -1,7 +1,7 @@
 "use client";
 // page.js - This file establishes the route segment /quizzes/[quiz] and renders a quiz component
 
-import Cards from "@/app/redux/features/cards/cards.js";
+import Cards from "@/app/components/cards/cards.js";
 import { getCardIdList } from "@/app/utilities";
 import { getQuizName } from "@/app/utilities";
 
@@ -17,7 +17,7 @@ export default function Quiz({params}) {
     return (
         <>
             <h1>{quizName}</h1>
-            <Cards cardList={cardIdList}/>
+            <Cards cardIdList={cardIdList}/>
         </>
     )
 }

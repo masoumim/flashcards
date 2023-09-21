@@ -1,7 +1,7 @@
 // newCardForm.js - This file creates and renders a form for a new card
 
 import { useDispatch } from "react-redux";
-import { removeNewCard } from "../redux/features/cards/cardsSlice";
+import { removeNewCard } from "@/app/redux/features/cards/cardsSlice.js"
 
 export default function NewCardForm({ card }) {
 
