@@ -28,17 +28,17 @@ export default function AddTopicPage() {
         e.preventDefault();
         // Check if topic already exists               
         const topicExists = topics.some((topic) => topic.topicName === topicName);
-        if (topicExists) {            
-            setFeedBackMsg("sorry that topic already exists!");            
+        if (topicExists) {
+            setFeedBackMsg("sorry that topic already exists!");
         }
-        else {            
+        else {
             // Add the topic to store
             dispatch(addTopic({
                 topicId: uuidv4(),
                 topicName: topicName,
                 quizIds: []
             }));
-            
+
             // Clear the input field
             setTopicName("");
 
@@ -48,11 +48,12 @@ export default function AddTopicPage() {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="topic">Topic</label>
-            <input type="text" id="topic" name="topic" value={topicName} onChange={(e) => setTopicName(e.currentTarget.value)} required />
-            <button>Add Topic</button>
-            <p>{feedBackMsg}</p>
-        </form>
+        <div className="bg-purple-100 w-fit mx-auto h-52 mt-16 px-10 drop-shadow-lg">
+            <form onSubmit={handleSubmit}>                
+                <input className="outline-none text-center h-12 mr-10 mt-20" type="text" id="topic" name="topic" placeholder="enter topic name" value={topicName} onChange={(e) => setTopicName(e.currentTarget.value)} required />
+                <button className="rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300">Add Topic</button>
+                <p className="font-bold text-orange-500 text-center mt-5">{feedBackMsg}</p>
+            </form>
+        </div>
     )
 }

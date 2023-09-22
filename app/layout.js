@@ -17,12 +17,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html lang="en" className='bg-gray-50'>
       <body className={inter.className}>
-        <nav>
-          <Link href={"/topics"}>Topics</Link>
-          <Link href={"/quizzes"}>Quizzes</Link>
-          <Link href={"/new-quiz"}>New Quiz</Link>
+        <nav className='text-xl flex flex-row justify-center gap-5 bg-purple-600 text-purple-200 font-bold p-3'>
+          <Link href={"/"} className='hover:text-purple-50 transition ease-in duration-300'>Home</Link>
+          <Link href={"/topics"} className='hover:text-purple-50 transition ease-in duration-300'>Topics</Link>
+          <Link href={"/quizzes"} className='hover:text-purple-50 transition ease-in duration-300'>Quizzes</Link>
+          <Link href={"/new-quiz"} className='hover:text-purple-50 transition ease-in duration-300'>New Quiz</Link>
         </nav>
         <AppProvider>
           {children}

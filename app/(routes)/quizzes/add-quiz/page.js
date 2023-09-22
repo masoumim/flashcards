@@ -124,7 +124,7 @@ export default function AddQuizPage() {
                 <br />
                 <button onClick={handleAddNewCard} type="button">Add Card</button>
                 <button>Create Quiz</button>
-                <p>{feedBackMsg}</p>
+                <p className="font-bold">{feedBackMsg}</p>
             </form>
         </>
     )
