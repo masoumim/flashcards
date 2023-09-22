@@ -1,0 +1,28 @@
+/* 
+Add the Tailwind CSS directives that Tailwind will use to inject its 
+generated styles to a Global Stylesheet in your application.
+
+Directives are custom Tailwind-specific at-rules you can use in your CSS 
+that offer special functionality for Tailwind CSS projects.
+
+Use the @tailwind directive to insert Tailwind’s base, components, 
+utilities and variants styles into your CSS.
+*/
+
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+/**
+  * This injects Tailwind's component classes and any component classes
+  * registered by plugins.
+  */
+@tailwind components;
+
+/**
+  * This injects Tailwind's utility classes and any utility classes registered
+  * by plugins.
+  */
+@tailwind utilities;
