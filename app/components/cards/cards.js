@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 export default function Cards({ cardIdList, quizName }) {
 
     // Get the cards belonging to this quiz
-    const quizCards = getCardsForQuiz(cardIdList);
+    // const quizCards = getCardsForQuiz(cardIdList);
+    const[quizCards] = useState(getCardsForQuiz(cardIdList));
 
     // State variable to track position in the quizCards array
     const [cardIndex, setCardIndex] = useState(0);
