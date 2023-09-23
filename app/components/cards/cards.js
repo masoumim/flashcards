@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Cards({ cardIdList, quizName }) {
 
-    // Get the cards belonging to this quiz
+    // Get the array of cards belonging to this quiz
     const quizCards = getCardsForQuiz(cardIdList);
 
     // State variable to track position in the quizCards array
