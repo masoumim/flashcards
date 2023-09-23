@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 export default function Cards({ cardIdList, quizName }) {
 
     // Get the cards belonging to this quiz
-    const quizCards = getCardsForQuiz(cardIdList);
+    // const quizCards = getCardsForQuiz(cardIdList);
+    const[quizCards] = useState(getCardsForQuiz(cardIdList));
 
     // State variable to track position in the quizCards array
     const [cardIndex, setCardIndex] = useState(0);
@@ -32,6 +33,7 @@ export default function Cards({ cardIdList, quizName }) {
 
     // Display next card
     function handleNextCard() {
+        
         // If already at the last card, go to first card
         if (cardIndex === quizCards.length - 1) {
             setCardIndex(0);
@@ -41,36 +43,47 @@ export default function Cards({ cardIdList, quizName }) {
             setCardIndex(cardIndex + 1);
             setCardCount(cardCount + 1);
         }
+        console.log(quizCards);
     }
 
     // Display previous card
     function handlePreviousCard() {
+        
         // If already at the first card, go to last card
         if (cardIndex === 0) {
-            setCardIndex(quizCards.length - 1)
+            setCardIndex(quizCards.length - 1);
             setCardCount(quizCards.length);
         }
         else {
             setCardIndex(cardIndex - 1);
             setCardCount(cardCount - 1);
         }
+        console.log(quizCards);
+    }
+
+    // Shuffle / Randomize the array of cards (Fisher-Yates (aka Knuth) Shuffle)
+    function shuffle() {
+        let currentIndex = quizCards.length;
+        let randomIndex;
+
+        // While there remain elements to shuffle.
+        while (currentIndex > 0) {
+            
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [quizCards[currentIndex], quizCards[randomIndex]] = [quizCards[randomIndex], quizCards[currentIndex]];
+        }
+        setCardIndex(0);
+        setCardCount(1);
+        setCurrentCard(quizCards[cardIndex].front);
     }
 
     return (
         <>
-
-            {/* <div className="flex flex-col items-center bg-purple-100 w-fit mx-auto mt-16 gap-4 drop-shadow-lg">
-                <p className="text-3xl text-purple-800 font-bold my-10">{quizName}</p>
-                <div onClick={handleCardClick}>
-                    <p className="text-center text-4xl break-words">{currentCard}</p>
-                </div>
-                <div className="mb-10 mt-10">
-                    <button className="mr-52 ml-10 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handlePreviousCard}>Previous Card</button>
-                    <button className="ml-52 mr-10 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handleNextCard}>Next Card</button>
-                </div>
-            </div> */}
-
-            <div className="flex flex-col items-center mt-16 w-fit mx-auto p-10 border-4 rounded-2xl border-solid border-purple-800 bg-purple-200">
+            <div className="flex flex-col items-center mb-10 mt-16 w-fit mx-auto p-10 border-4 rounded-2xl border-solid border-purple-800 bg-purple-200">
                 {/* Quiz Name */}
                 <p className="text-3xl text-purple-800 font-bold mt-1 mb-10">{quizName}</p>
                 {/* Card */}
@@ -85,6 +98,7 @@ export default function Cards({ cardIdList, quizName }) {
                     <button className="mr-48 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handlePreviousCard}>Previous Card</button>
                     <button className="ml-48 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handleNextCard}>Next Card</button>
                 </div>
+                <button className="mx-auto rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={shuffle}>Shuffle</button>
             </div>
         </>
     )
