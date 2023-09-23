@@ -14,12 +14,11 @@ export default function NewCardForm({ card }) {
     }
 
     return (
-        <>
-            <label htmlFor="question">Question</label>
-            <input type="text" name="question" id="question" required/>
-            <label htmlFor="answer">Answer</label>
-            <input type="text" name="answer" id="answer" required/>
-            <button onClick={handleRemoveCard}>Remove Card</button>
+        <>  <div className="flex flex-col py-5 gap-3 items-center">
+            <input className="text-center w-80 h-10" placeholder="enter question" type="text" name="question" id="question" required/>            
+            <input className="text-center w-80 h-10" placeholder="enter answer" type="text" name="answer" id="answer" required/>
+            <button className="w-fit rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handleRemoveCard}>Remove Card</button>
+            </div>          
         </>
     );
 }

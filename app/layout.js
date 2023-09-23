@@ -3,7 +3,6 @@
 // makes the store's state available from any component in the app.
 
 import './globals.css'
-import './components/cards/cards.css'
 import { Inter } from 'next/font/google'
 import Link from 'next/link'
 import AppProvider from './appProvider'

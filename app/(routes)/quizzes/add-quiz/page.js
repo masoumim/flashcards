@@ -43,7 +43,7 @@ export default function AddQuizPage() {
         if (quizExists) {
             setFeedBackMsg("Sorry, that quiz already exists!");
         }
-        else if(newCardsList.length === 0){
+        else if (newCardsList.length === 0) {
             setFeedBackMsg("Quiz must have at least 1 flashcard");
         }
         else {
@@ -106,26 +106,31 @@ export default function AddQuizPage() {
 
     return (
         <>
-            <form id="addNewQuiz" onSubmit={handleSubmit}>
-                <label htmlFor="quiz">Quiz Name</label>
-                <input type="text" id="quiz-name" name="quiz-name" value={quizName} onChange={(e) => setQuizName(e.currentTarget.value)} required />
-                {/* <select> drop-down element is populated with Topics */}
-                <select id="topics" required>
-                    <option value={""}>{"Select a Topic"}</option>
-                    {topics.map((topic, index) => {
-                        return (<option key={index} value={topic.topicId}>{topic.topicName}</option>);
-                    })}
-                </select>
-                <br />
-                {/* List of new cards for this quiz */}
-                {newCardsList.map((card) => {
-                    return <NewCardForm key={card.cardId} card={card} />
-                })}
-                <br />
-                <button onClick={handleAddNewCard} type="button">Add Card</button>
-                <button>Create Quiz</button>
-                <p className="font-bold">{feedBackMsg}</p>
-            </form>
+            <div className="bg-purple-100 w-fit mx-auto mt-16 pb-5 px-10 drop-shadow-lg">
+                <form id="addNewQuiz" onSubmit={handleSubmit}>
+                    <input className="outline-none text-center w-60 mt-10 mr-5 h-10" placeholder="enter quiz name" type="text" id="quiz-name" name="quiz-name" value={quizName} onChange={(e) => setQuizName(e.currentTarget.value)} required />
+                    {/* <select> drop-down element is populated with Topics */}
+                    <select className="h-10 w-52 outline-none text-center" id="topics" required>
+                        <option value={""}>{"Select a Topic"}</option>
+                        {topics.map((topic, index) => {
+                            return (<option key={index} value={topic.topicId}>{topic.topicName}</option>);
+                        })}
+                    </select>
+                    <br />
+                    {/* List of new cards for this quiz */}
+                    <div className="flex flex-col">
+                        {newCardsList.map((card) => {
+                            return <NewCardForm key={card.cardId} card={card} />
+                        })}
+                    </div>
+                    <br />
+                    <div className="text-center">
+                        <button className="mr-20 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handleAddNewCard} type="button">Add Card</button>
+                        <button className="ml-20 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300">Create Quiz</button>
+                    </div>
+                    <p className="font-bold text-orange-500 text-center mt-5">{feedBackMsg}</p>
+                </form>
+            </div>
         </>
     )
 }

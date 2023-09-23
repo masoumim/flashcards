@@ -21,8 +21,7 @@ export default function Quiz({ params }) {
 
     return (
         <>
-            <h1>{quizName}</h1>
-            <Cards cardIdList={cardIdList} />
+            <Cards cardIdList={cardIdList} quizName={quizName} />
         </>
     )
 }
