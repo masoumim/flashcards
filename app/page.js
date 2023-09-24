@@ -8,7 +8,6 @@ export default function Home() {
           <Image src='/img/idea.png' alt="picture of lightbulb" priority={true} width={100} height={100}></Image>
           <p className="text-xl text-center text-purple-800">Easily create <i>custom</i> <b className=" text-orange-500">topics</b>, <b className=" text-orange-500">flashcards</b> and <b className=" text-orange-500">quizzes</b>!</p>
       </div>
-      <p className="font-bold text-purple-500 sm:text-green-500 md:text-red-500 lg:text-blue-500 xl:text-pink-500 2xl:text-orange-500">TEST</p>
     </>
   )
 }
