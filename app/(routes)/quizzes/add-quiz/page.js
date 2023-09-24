@@ -106,11 +106,13 @@ export default function AddQuizPage() {
 
     return (
         <>
-            <div className="bg-purple-100 w-fit mx-auto mt-16 pb-5 px-10 drop-shadow-lg">
-                <form id="addNewQuiz" onSubmit={handleSubmit}>
-                    <input className="outline-none text-center w-60 mt-10 mr-5 h-10" placeholder="enter quiz name" type="text" id="quiz-name" name="quiz-name" value={quizName} onChange={(e) => setQuizName(e.currentTarget.value)} required />
+            <div className="bg-purple-100 w-fit mx-auto mt-16 pb-5 px-5 mb-12 drop-shadow-lg sm:px-10">
+                {/* Form */}
+                <form className="flex flex-col items-center sm:inline-block" id="addNewQuiz" onSubmit={handleSubmit}>
+                    {/* Quiz Name Input */}
+                    <input className="outline-none text-center w-60 mt-10 mb-5 h-10 sm:mr-5" placeholder="enter quiz name" type="text" id="quiz-name" name="quiz-name" value={quizName} onChange={(e) => setQuizName(e.currentTarget.value)} required maxLength={12}/>
                     {/* <select> drop-down element is populated with Topics */}
-                    <select className="h-10 w-52 outline-none text-center" id="topics" required>
+                    <select className="h-10 w-60 outline-none text-center sm:ml-5" id="topics" required>
                         <option value={""}>{"Select a Topic"}</option>
                         {topics.map((topic, index) => {
                             return (<option key={index} value={topic.topicId}>{topic.topicName}</option>);
@@ -124,10 +126,12 @@ export default function AddQuizPage() {
                         })}
                     </div>
                     <br />
+                    {/* Buttons */}
                     <div className="text-center">
-                        <button className="mr-20 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300" onClick={handleAddNewCard} type="button">Add Card</button>
-                        <button className="ml-20 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300">Create Quiz</button>
+                        <button className="mr-10 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300 sm:mr-40" onClick={handleAddNewCard} type="button">Add Card</button>
+                        <button className="ml-10 rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300 sm:ml-40">Create Quiz</button>
                     </div>
+                    {/* Feedback Msg */}
                     <p className="font-bold text-orange-500 text-center mt-5">{feedBackMsg}</p>
                 </form>
             </div>

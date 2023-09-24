@@ -48,9 +48,11 @@ export default function AddTopicPage() {
     }
 
     return (
-        <div className="bg-purple-100 w-fit mx-auto h-52 mt-16 px-10 drop-shadow-lg">
+        <div className="bg-purple-100 w-fit mx-auto h-52 mt-16 drop-shadow-lg px-4 sm:px-10">
             <form onSubmit={handleSubmit}>                
-                <input className="outline-none text-center h-12 mr-10 mt-20" type="text" id="topic" name="topic" placeholder="enter topic name" value={topicName} onChange={(e) => setTopicName(e.currentTarget.value)} required />
+                {/* Topic Name Input */}
+                <input className="outline-none text-center h-12 w-44 mr-7 mt-20 sm:mr-10 sm:w-60" type="text" id="topic" name="topic" placeholder="enter topic name" value={topicName} onChange={(e) => setTopicName(e.currentTarget.value)} required maxLength={12}/>
+                {/* Add Topic Button */}
                 <button className="rounded-2xl p-3 text-purple-200 bg-purple-800 font-bold hover:bg-purple-600 hover:text-white transition ease-in duration-300">Add Topic</button>
                 <p className="font-bold text-orange-500 text-center mt-5">{feedBackMsg}</p>
             </form>

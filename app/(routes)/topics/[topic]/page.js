@@ -21,7 +21,7 @@ export default function TopicPage({ params }) {
 
     return (
         <>
-            <div className="flex flex-col items-center bg-purple-100 w-96 p-10 mx-auto mt-16 gap-4 drop-shadow-lg">
+            <div className="flex flex-col items-center bg-purple-100 w-80 p-10 mx-auto mt-16 gap-4 drop-shadow-lg sm:w-96">
                 <h1 className="text-xl text-purple-800 font-bold">'{topicName}' Quizzes:</h1>
                 {/* List all Quizzes with this topic */}
                 {topicQuizzes.map((quiz) => {

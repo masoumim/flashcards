@@ -12,7 +12,7 @@ export default function Quizzes() {
     // Render / display each of the Quizzes    
     return (
         <>
-            <div className="flex flex-col items-center bg-purple-100 w-96 p-10 mx-auto mt-16 gap-4 drop-shadow-lg">
+            <div className="flex flex-col items-center bg-purple-100 w-80 p-10 mx-auto mt-16 gap-4 drop-shadow-lg sm:w-96">
                 <b className="text-xl text-purple-800">Quizzes:</b>
                 {quizzesList.map((quiz) => {
                     return <Link className="text-2xl underline underline-offset-8 font-bold text-orange-500 hover:text-orange-400 transition ease-in duration-200" href={`/quizzes/${quiz.quizId}`} key={quiz.quizId}>{quiz.quizName}</Link>

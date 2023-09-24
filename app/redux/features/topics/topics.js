@@ -13,7 +13,7 @@ export default function Topics() {
     // Clicking a Topic will take you to that Topic's page showing all Quizzes for that Topic
     return (
         <>
-            <div className="flex flex-col items-center bg-purple-100 w-96 p-10 mx-auto mt-16 gap-4 drop-shadow-lg">
+            <div className="flex flex-col items-center bg-purple-100 w-80 p-10 mx-auto mt-16 gap-4 drop-shadow-lg sm:w-96">
                 <b className="text-xl text-purple-800">Topics:</b>
                 {topics.map((topic) => {
                     return <Link className="text-2xl underline underline-offset-8 font-bold text-orange-500 hover:text-orange-400 transition ease-in duration-200" href={`/topics/${topic.topicId}`} key={topic.topicId}>{topic.topicName}</Link>
